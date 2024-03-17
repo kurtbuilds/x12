@@ -8,16 +8,12 @@ edition = "2021"
 [workspace]
 members = [
     ".",
-    "anonymizer",
-    "anonymizer_cli",
-    "compare",
-    "gen_x12_types",
     "serde_x12",
     "x12",
 ]
 
 [dependencies]
 serde_x12_alt = { path = "serde_x12" }
-x12_alt = { path = "x12" }
+x12_alt = { path = "x12", features = ["8010"] }
 serde_json = "1.0.113"
 serde = { version = "1.0.197", features = ["derive"] }

@@ -12,7 +12,7 @@ fn main() {
     // let el = Element::Container(vec!["hello".to_string()]);
     // let s = serde_json::to_string(&el).unwrap();
     // eprintln!("Element: {}", s);
-    let x12 = include_str!("../compare/data/CHPW_Claimdata.txt");
+    let x12 = include_str!("../data/CHPW_Claimdata.txt");
     // let doc = edi::parse(x12).unwrap();
     // dbg!(&doc);
     let segments: Vec<_> = x12.split("\n").collect();

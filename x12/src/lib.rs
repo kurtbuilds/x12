@@ -6,7 +6,10 @@ pub use iea::InterchangeControlTrailer;
 pub use isa::InterchangeControlHeader;
 pub use numeric::Numeric;
 
+#[cfg(feature = "8010")]
 pub mod release_8010;
+#[cfg(feature = "5010")]
+pub mod release_5010;
 mod fixed;
 mod document;
 pub mod response;
