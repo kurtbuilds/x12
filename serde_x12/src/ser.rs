@@ -5,7 +5,7 @@ use serde::{ser, Serialize};
 use colored::Colorize;
 
 use crate::de::{is_container_element, is_segment};
-use crate::formatter::Level;
+use crate::formatter::{Level, VisualSeparator};
 use crate::X12Formatter;
 
 pub fn to_string<T>(value: &T) -> Result<String, X12SerializerError>
@@ -16,7 +16,6 @@ where
     let ser = SerState {
         delimiter: inner.formatter.segment_delimiter,
         ser: &mut inner,
-        first: true,
         level: Level::Segment,
     };
     value.serialize(ser)?;
@@ -48,15 +47,13 @@ pub struct X12Serializer {
 }
 
 pub struct SerState<'ser> {
-    ser: &'ser mut X12Serializer,
-    first: bool,
-    delimiter: u8,
-    level: Level,
+    pub(crate) ser: &'ser mut X12Serializer,
+    pub(crate) delimiter: u8,
+    pub(crate) level: Level,
 }
 
 pub struct SerStruct<'ser> {
     ser: &'ser mut X12Serializer,
-    first: bool,
     delimiter: u8,
     level: Level,
     skip: bool,
@@ -68,7 +65,6 @@ impl<'ser> SerStruct<'ser> {
         Self {
             delimiter: ser.formatter.delimiter(level),
             ser,
-            first: true,
             level,
             skip: false,
             name: "",
@@ -80,7 +76,6 @@ impl<'ser> SerState<'ser> {
         Self {
             delimiter: ser.formatter.delimiter(level),
             ser,
-            first: true,
             level,
         }
     }
@@ -321,9 +316,16 @@ impl<'ser> ser::SerializeStruct for SerStruct<'ser> {
             self.ser.output.pop();
         }
         if self.level == Level::Element {
-            if !self.ser.output.ends_with(&[self.ser.formatter.segment_delimiter, b'\n']) {
+            let f = self.ser.formatter;
+            let o = &self.ser.output;
+            let ends_segment = match f.visual_separator {
+                VisualSeparator::None => o.ends_with(&[f.segment_delimiter]),
+                VisualSeparator::Newline => o.ends_with(&[f.segment_delimiter, b'\n']),
+                VisualSeparator::CarriageNewline => o.ends_with(&[f.segment_delimiter, b'\r', b'\n']),
+            };
+            if !ends_segment {
                 self.ser.output.push(self.ser.formatter.segment_delimiter);
-                self.ser.output.push(b'\n');
+                self.ser.output.extend_from_slice(self.ser.formatter.visual_separator.as_bytes());
             }
         }
         // eprintln!("finished {} - {}.\n{}\n{}", self.name, self.level, "colored output:".green(), String::from_utf8(self.ser.output.clone()).unwrap());
@@ -356,11 +358,6 @@ impl<'ser> ser::SerializeTupleVariant for SerState<'ser> {
             T: ?Sized + Serialize,
     {
         todo!()
-        // if !self.first {
-        //     self.ser.output.push(self.delimiter);
-        // }
-        // self.first = false;
-        // value.serialize(SerState::new(self.ser, self.level))
     }
 
     fn end(self) -> Result<(), Self::Error> {

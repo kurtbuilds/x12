@@ -3,7 +3,7 @@
 use std::fs;
 use std::str::FromStr;
 
-use serde_x12::{detect_version, Element, from_str, to_string};
+use serde_x12::{detect_format, detect_version, Element, from_str, to_string};
 use x12::Document;
 use x12::release_5010::transactions::HealthCareClaim;
 use x12::InterchangeControlHeader;
@@ -13,8 +13,13 @@ fn main() {
     // let s = serde_json::to_string(&el).unwrap();
     // eprintln!("Element: {}", s);
     let x12 = include_str!("../data/CHPW_Claimdata.txt");
+    let x12 = include_str!("/Users/kurt/Downloads/HCHC.APC.20220325PC029");
     // let doc = edi::parse(x12).unwrap();
     // dbg!(&doc);
+    let v = detect_format(x12);
+    dbg!(v);
+    eprintln!("{:?}", &x12[106..108]);
+    unimplemented!();
     let segments: Vec<_> = x12.split("\n").collect();
     // let lines = segments.len();
     // dbg!(&segments[..lines]);

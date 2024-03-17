@@ -1,5 +1,7 @@
 use std::fmt::Debug;
 use std::str::FromStr;
+use serde::{ser, Serialize};
+use crate::ser::{SerState, X12Serializer, X12SerializerError};
 
 #[derive(Debug, PartialEq, Copy, Clone)]
 pub enum Level {
@@ -37,10 +39,40 @@ pub fn split_string(s: &str, d: char) -> (&str, Option<&str>) {
 }
 
 #[derive(Copy, Clone)]
+pub enum VisualSeparator {
+    None,
+    /// \n
+    Newline,
+    /// \r\n
+    CarriageNewline,
+}
+
+impl VisualSeparator {
+    pub fn as_bytes(&self) -> &[u8] {
+        match self {
+            VisualSeparator::None => b"",
+            VisualSeparator::Newline => b"\n",
+            VisualSeparator::CarriageNewline => b"\r\n",
+        }
+    }
+}
+
+impl Debug for VisualSeparator {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            VisualSeparator::None => write!(f, r#""""#),
+            VisualSeparator::Newline => write!(f, r#""\n""#),
+            VisualSeparator::CarriageNewline => write!(f, r#""\r\n""#),
+        }
+    }
+}
+
+#[derive(Copy, Clone)]
 pub struct X12Formatter {
     pub element_delimiter: u8,
     pub sub_element_delimiter: u8,
     pub segment_delimiter: u8,
+    pub visual_separator: VisualSeparator,
 }
 
 impl X12Formatter {
@@ -51,6 +83,28 @@ impl X12Formatter {
             Level::Subelement => self.sub_element_delimiter,
         }
     }
+
+    pub fn segment_terminator(&self) -> Vec<u8> {
+        match self.visual_separator {
+            VisualSeparator::None => Vec::from(&[self.segment_delimiter]),
+            VisualSeparator::Newline => Vec::from(&[self.segment_delimiter, b'\n']),
+            VisualSeparator::CarriageNewline => Vec::from(&[self.segment_delimiter, b'\r', b'\n']),
+        }
+    }
+
+    pub fn to_string<T>(&self, value: &T) -> Result<String, X12SerializerError>
+        where
+            T: ser::Serialize,
+    {
+        let mut inner = X12Serializer::new(*self);
+        let ser = SerState {
+            delimiter: self.segment_delimiter,
+            ser: &mut inner,
+            level: Level::Segment,
+        };
+        value.serialize(ser)?;
+        Ok(inner.to_string())
+    }
 }
 
 impl Debug for X12Formatter {
@@ -59,6 +113,7 @@ impl Debug for X12Formatter {
             .field("element_delimiter", &(self.element_delimiter as char))
             .field("sub_element_delimiter", &(self.sub_element_delimiter as char))
             .field("segment_delimiter", &(self.segment_delimiter as char))
+            .field("visual_separator", &self.visual_separator)
             .finish()
     }
 }
@@ -69,6 +124,7 @@ impl Default for X12Formatter {
             element_delimiter: b'*',
             sub_element_delimiter: b':',
             segment_delimiter: b'~',
+            visual_separator: VisualSeparator::Newline,
         }
     }
 }
@@ -89,10 +145,17 @@ pub fn detect_format(s: &str) -> Option<X12Formatter> {
     let element_delimiter = s[103];
     let sub_element_delimiter = s[104];
     let segment_delimiter = s[105];
+    let visual_separator = match &s[106..108] {
+        b"\r\n" => VisualSeparator::CarriageNewline,
+        b"\nG" => VisualSeparator::Newline,
+        b"GS" => VisualSeparator::None,
+        _ => return None,
+    };
     Some(X12Formatter {
         element_delimiter,
         sub_element_delimiter,
         segment_delimiter,
+        visual_separator,
     })
 }
 
