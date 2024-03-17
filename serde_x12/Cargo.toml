@@ -4,6 +4,9 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "Serde support for X12 EDI"
+homepage = "https://github.com/kurtbuilds/x12"
+repository = "https://github.com/kurtbuilds/x12"
+documentation = "https://docs.rs/serde_x12_alt"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
