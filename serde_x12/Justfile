@@ -1,0 +1,3 @@
+
+test *ARGS:
+    cargo test {{ ARGS }} {{ if ARGS != "" { "-- --nocapture" } else { "" } }}

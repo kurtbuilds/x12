@@ -1,0 +1,17 @@
+[package]
+name = "x12_alt"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "x12"
+path = "src/lib.rs"
+
+[features]
+8010 = []
+5010 = []
+
+[dependencies]
+serde = { version = "1.0.196" , features = ["derive"] }

@@ -1,0 +1,23 @@
+[package]
+name = "x12"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+members = [
+    ".",
+    "anonymizer",
+    "anonymizer_cli",
+    "compare",
+    "gen_x12_types",
+    "serde_x12",
+    "x12",
+]
+
+[dependencies]
+serde_x12_alt = { path = "serde_x12" }
+x12_alt = { path = "x12" }
+serde_json = "1.0.113"
+serde = { version = "1.0.197", features = ["derive"] }

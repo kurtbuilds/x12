@@ -1,0 +1,16 @@
+[package]
+name = "serde_x12_alt"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "serde_x12"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1.0.197", features = ["derive"] }
+colored = "2.1.0"
+
+[dev-dependencies]
+x12_alt = { path = "../x12" }

@@ -1,0 +1,3 @@
+[patch.crates-io]
+libninja_mir = { path = "../libninja/mir" }
+libninja_mir_rust = { path = "../libninja/mir_rust" }
