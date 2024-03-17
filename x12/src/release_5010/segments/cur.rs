@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To specify the currency (dollars, pounds, francs, etc.) used in a transaction
 
-See docs at <https://www.stedi.com/edi/x12/segment/CUR>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CUR>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CUR")]
 pub struct Currency {

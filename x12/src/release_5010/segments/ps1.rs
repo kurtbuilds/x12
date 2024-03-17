@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To specify the information about services that are purchased
 
-See docs at <https://www.stedi.com/edi/x12/segment/PS1>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/PS1>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "PS1")]
 pub struct PurchaseService {

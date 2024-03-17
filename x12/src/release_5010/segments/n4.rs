@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To specify the geographic place of the named party
 
-See docs at <https://www.stedi.com/edi/x12/segment/N4>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/N4>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "N4")]
 pub struct GeographicLocation {

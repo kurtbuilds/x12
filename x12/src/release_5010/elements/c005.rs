@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use super::super::codes::ToothSurfaceCode;
 /**To identify one or more tooth surface codes
 
-See docs at <https://www.stedi.com/edi/x12/element/C005>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/C005>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "C005")]
 pub struct ToothSurface {

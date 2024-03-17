@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1373
 
-See docs at <https://www.stedi.com/edi/x12/element/1373>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1373>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum MeasurementMethodOrDevice {
     ///BM - Bellows Meter

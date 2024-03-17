@@ -1,10 +1,10 @@
 use serde::{Serialize, Deserialize};
+use crate::fixed::Fixed;
 use super::super::codes::CountryCode;
 use super::super::codes::RelatedCausesCode;
-use crate::fixed::Fixed;
 /**To identify one or more related causes and associated state or country information
 
-See docs at <https://www.stedi.com/edi/x12/element/C024>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/C024>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "C024")]
 pub struct RelatedCauses {

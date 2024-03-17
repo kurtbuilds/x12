@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To specify the results of the utilization review
 
-See docs at <https://www.stedi.com/edi/x12/segment/UR>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/UR>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "UR")]
 pub struct PeerReviewOrganizationOrUtilizationReview {

@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To specify basic item identification data
 
-See docs at <https://www.stedi.com/edi/x12/segment/LIN>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/LIN>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "LIN")]
 pub struct ItemIdentification {

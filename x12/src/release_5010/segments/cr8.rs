@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply information related to Pacemaker registry
 
-See docs at <https://www.stedi.com/edi/x12/segment/CR8>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CR8>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CR8")]
 pub struct PacemakerCertification {

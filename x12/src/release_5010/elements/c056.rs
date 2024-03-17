@@ -3,7 +3,7 @@ use crate::fixed::Fixed;
 use super::super::codes::CodeListQualifierCode;
 /**To send general and detailed information on race or ethnicity
 
-See docs at <https://www.stedi.com/edi/x12/element/C056>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/C056>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "C056")]
 pub struct CompositeRaceOrEthnicity {

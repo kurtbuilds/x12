@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To specify the claim service detail for drug services that have been adjudicated
 
-See docs at <https://www.stedi.com/edi/x12/segment/SV7>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/SV7>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "SV7")]
 pub struct DrugAdjudication {

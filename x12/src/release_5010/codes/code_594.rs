@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**594
 
-See docs at <https://www.stedi.com/edi/x12/element/594>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/594>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum FrequencyCode {
     ///0 - Annualized; 12-month equivalent

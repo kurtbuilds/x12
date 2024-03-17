@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1350
 
-See docs at <https://www.stedi.com/edi/x12/element/1350>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1350>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum OxygenTestFindingsCode {
     ///1 - Dependent edema suggesting congestive heart failure

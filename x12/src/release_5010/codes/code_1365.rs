@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1365
 
-See docs at <https://www.stedi.com/edi/x12/element/1365>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1365>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum ServiceTypeCode {
     ///1 - Medical Care

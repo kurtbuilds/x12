@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply information on conditions
 
-See docs at <https://www.stedi.com/edi/x12/segment/CRC>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CRC>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CRC")]
 pub struct ConditionsIndicator {

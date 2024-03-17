@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To indicate the start of a transaction set and to assign a control number
 
-See docs at <https://www.stedi.com/edi/x12/segment/ST>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/ST>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "ST")]
 pub struct TransactionSetHeader {

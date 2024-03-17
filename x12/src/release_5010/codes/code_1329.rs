@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1329
 
-See docs at <https://www.stedi.com/edi/x12/element/1329>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1329>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum DispenseAsWrittenCode {
     ///0 - Not Dispense As Written (DAW)

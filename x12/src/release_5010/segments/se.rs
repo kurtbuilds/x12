@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::numeric::Numeric;
 /**To indicate the end of the transaction set and provide the count of the transmitted segments (including the beginning (ST) and ending (SE) segments)
 
-See docs at <https://www.stedi.com/edi/x12/segment/SE>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/SE>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "SE")]
 pub struct TransactionSetTrailer {

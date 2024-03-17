@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply information related to the certification of a home health care patient
 
-See docs at <https://www.stedi.com/edi/x12/segment/CR6>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CR6>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CR6")]
 pub struct HomeHealthCareCertification {

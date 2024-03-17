@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1363
 
-See docs at <https://www.stedi.com/edi/x12/element/1363>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1363>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum ReleaseOfInformationCode {
     ///A - Appropriate Release of Information on File at Health Care Service Provider or at Utilization Review Organization

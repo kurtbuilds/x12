@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1136
 
-See docs at <https://www.stedi.com/edi/x12/element/1136>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1136>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum CodeCategory {
     ///00 - Employee Mobility

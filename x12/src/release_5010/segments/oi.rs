@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To specify information associated with other health insurance coverage
 
-See docs at <https://www.stedi.com/edi/x12/segment/OI>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/OI>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "OI")]
 pub struct OtherHealthInsurance {

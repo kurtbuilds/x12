@@ -4,7 +4,7 @@ use crate::fixed::Fixed;
 
 (See Figures Appendix for examples of use)
 
-See docs at <https://www.stedi.com/edi/x12/element/C001>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/C001>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "C001")]
 pub struct CompositeUnitOfMeasure {

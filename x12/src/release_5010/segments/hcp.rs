@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To specify pricing or repricing information about a health care claim or line item
 
-See docs at <https://www.stedi.com/edi/x12/segment/HCP>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/HCP>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "HCP")]
 pub struct HealthCarePricing {

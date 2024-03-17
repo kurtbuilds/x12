@@ -3,7 +3,7 @@ use super::super::elements::CompositeMedicalProcedure;
 use crate::fixed::Fixed;
 /**To specify the claim service detail for durable medical equipment
 
-See docs at <https://www.stedi.com/edi/x12/segment/SV5>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/SV5>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "SV5")]
 pub struct DurableMedicalEquipmentService {

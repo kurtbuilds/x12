@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**756
 
-See docs at <https://www.stedi.com/edi/x12/element/756>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/756>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum ReportTransmissionCode {
     ///1 - Summary Electronic Invoice

@@ -1,9 +1,9 @@
 use serde::{Serialize, Deserialize};
-use crate::numeric::Numeric;
 use super::super::elements::CompositeMedicalProcedure;
+use crate::numeric::Numeric;
 /**To convey service line adjudication information for coordination of benefits between the initial payers of a health care claim and all subsequent payers
 
-See docs at <https://www.stedi.com/edi/x12/segment/SVD>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/SVD>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "SVD")]
 pub struct ServiceLineAdjudication {

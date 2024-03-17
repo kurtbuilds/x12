@@ -3,7 +3,7 @@ use crate::numeric::Numeric;
 use crate::fixed::Fixed;
 /**To specify the delivery pattern of health care services
 
-See docs at <https://www.stedi.com/edi/x12/segment/HSD>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/HSD>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "HSD")]
 pub struct HealthCareServicesDelivery {

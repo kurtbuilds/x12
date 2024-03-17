@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**640
 
-See docs at <https://www.stedi.com/edi/x12/element/640>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/640>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum TransactionTypeCode {
     ///01 - Location Address Message

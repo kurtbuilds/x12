@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use super::super::elements::ToothSurface;
 /**To identify a tooth by number and, if applicable, one or more tooth surfaces
 
-See docs at <https://www.stedi.com/edi/x12/segment/TOO>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/TOO>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "TOO")]
 pub struct ToothIdentification {

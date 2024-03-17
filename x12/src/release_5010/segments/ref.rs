@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use super::super::elements;
 /**To specify identifying information
 
-See docs at <https://www.stedi.com/edi/x12/segment/REF>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/REF>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "REF")]
 pub struct Reference {

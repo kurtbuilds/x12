@@ -1,11 +1,11 @@
 use serde::{Serialize, Deserialize};
-use super::super::elements::CompositeUnitOfMeasure;
 use crate::fixed::Fixed;
+use super::super::elements::CompositeUnitOfMeasure;
 /**To specify physical measurements or counts, including dimensions, tolerances, variances, and weights
 
 (See Figures Appendix for example of use of C001)
 
-See docs at <https://www.stedi.com/edi/x12/segment/MEA>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/MEA>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "MEA")]
 pub struct Measurements {

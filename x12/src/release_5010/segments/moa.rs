@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 /**To convey claim-level data related to the adjudication of Medicare claims not related to an inpatient setting
 
-See docs at <https://www.stedi.com/edi/x12/segment/MOA>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/MOA>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "MOA")]
 pub struct MedicareOutpatientAdjudication {

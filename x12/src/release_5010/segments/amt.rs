@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To indicate the total monetary amount
 
-See docs at <https://www.stedi.com/edi/x12/segment/AMT>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/AMT>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "AMT")]
 pub struct MonetaryAmount {

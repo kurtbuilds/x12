@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use super::super::elements::CompositeUnitOfMeasure;
 /**To transmit a fixed-format record or matrix contents
 
-See docs at <https://www.stedi.com/edi/x12/segment/K3>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/K3>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "K3")]
 pub struct File {

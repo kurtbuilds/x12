@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply patient information
 
-See docs at <https://www.stedi.com/edi/x12/segment/PAT>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/PAT>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "PAT")]
 pub struct Patient {

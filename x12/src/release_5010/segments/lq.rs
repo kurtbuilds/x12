@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 /**To identify standard industry codes
 
-See docs at <https://www.stedi.com/edi/x12/segment/LQ>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/LQ>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "LQ")]
 pub struct IndustryCodeIdentification {

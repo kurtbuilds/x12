@@ -3,7 +3,7 @@ use super::super::elements::CompositeMedicalProcedure;
 use crate::fixed::Fixed;
 /**To specify the claim service detail for prescription drugs
 
-See docs at <https://www.stedi.com/edi/x12/segment/SV4>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/SV4>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "SV4")]
 pub struct DrugService {

@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use super::super::codes::PaperworkReportActionCode;
 /**Actions to be performed on the piece of paperwork identified
 
-See docs at <https://www.stedi.com/edi/x12/element/C002>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/C002>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "C002")]
 pub struct ActionsIndicated {

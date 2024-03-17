@@ -3,7 +3,7 @@ use crate::numeric::Numeric;
 use crate::fixed::Fixed;
 /**To supply information related to the chiropractic service rendered to a patient
 
-See docs at <https://www.stedi.com/edi/x12/segment/CR2>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CR2>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CR2")]
 pub struct ChiropracticCertification {

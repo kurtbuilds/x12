@@ -3,7 +3,7 @@ use super::super::elements::CompositeUnitOfMeasure;
 use crate::fixed::Fixed;
 /**To specify quantity information
 
-See docs at <https://www.stedi.com/edi/x12/segment/QTY>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/QTY>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "QTY")]
 pub struct Quantity {

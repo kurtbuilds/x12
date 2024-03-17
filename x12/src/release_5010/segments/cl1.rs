@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply information specific to hospital claims
 
-See docs at <https://www.stedi.com/edi/x12/segment/CL1>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CL1>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CL1")]
 pub struct ClaimCodes {

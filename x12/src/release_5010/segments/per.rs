@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To identify a person or office to whom administrative communications should be directed
 
-See docs at <https://www.stedi.com/edi/x12/segment/PER>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/PER>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "PER")]
 pub struct AdministrativeCommunicationsContact {

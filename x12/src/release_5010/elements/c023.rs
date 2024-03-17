@@ -3,7 +3,7 @@ use super::super::codes::FacilityCodeQualifier;
 use crate::fixed::Fixed;
 /**To provide information that identifies the place of service or the type of bill related to the location at which a health care service was rendered
 
-See docs at <https://www.stedi.com/edi/x12/element/C023>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/C023>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "C023")]
 pub struct HealthCareServiceLocation {

@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1166
 
-See docs at <https://www.stedi.com/edi/x12/element/1166>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1166>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum ContractTypeCode {
     ///01 - Diagnosis Related Group (DRG)

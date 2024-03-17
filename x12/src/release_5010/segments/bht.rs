@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To define the business hierarchical structure of the transaction set and identify the business application purpose and reference data, i.e., number, date, and time
 
-See docs at <https://www.stedi.com/edi/x12/segment/BHT>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/BHT>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "BHT")]
 pub struct BeginningOfHierarchicalTransaction {

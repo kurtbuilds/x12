@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply information regarding a physician's certification for durable medical equipment
 
-See docs at <https://www.stedi.com/edi/x12/segment/CR3>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CR3>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CR3")]
 pub struct DurableMedicalEquipmentCertification {

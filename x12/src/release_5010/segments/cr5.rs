@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply information regarding certification of medical necessity for home oxygen therapy
 
-See docs at <https://www.stedi.com/edi/x12/segment/CR5>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CR5>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CR5")]
 pub struct OxygenTherapyCertification {

@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1356
 
-See docs at <https://www.stedi.com/edi/x12/element/1356>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1356>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum PrescriptionOriginCode {
     ///0 - Not Specified

@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**309
 
-See docs at <https://www.stedi.com/edi/x12/element/309>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/309>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum LocationQualifier {
     ///10 - Nearest Cross Street

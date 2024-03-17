@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**679
 
-See docs at <https://www.stedi.com/edi/x12/element/679>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/679>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum ShipDeliveryPatternTimeCode {
     ///A - 1st Shift (Normal Working Hours)

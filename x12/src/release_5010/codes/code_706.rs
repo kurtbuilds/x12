@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**706
 
-See docs at <https://www.stedi.com/edi/x12/element/706>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/706>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum EntityRelationshipCode {
     ///01 - Parent

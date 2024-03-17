@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1317
 
-See docs at <https://www.stedi.com/edi/x12/element/1317>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1317>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum AmbulanceTransportReasonCode {
     ///A - Patient was transported to nearest facility for care of symptoms, complaints, or both

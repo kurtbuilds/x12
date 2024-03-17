@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To record information specific to the primary insured and the insurance carrier for that insured
 
-See docs at <https://www.stedi.com/edi/x12/segment/SBR>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/SBR>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "SBR")]
 pub struct Subscriber {

@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**522
 
-See docs at <https://www.stedi.com/edi/x12/element/522>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/522>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum AmountQualifierCode {
     ///00 - Downpayment on the Repayment Plan Amount

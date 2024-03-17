@@ -1,11 +1,11 @@
 use serde::{Serialize, Deserialize};
+use crate::fixed::Fixed;
+use super::super::elements::OralCavityDesignation;
 use super::super::elements::CompositeMedicalProcedure;
 use super::super::elements::CompositeDiagnosisCodePointer;
-use super::super::elements::OralCavityDesignation;
-use crate::fixed::Fixed;
 /**To specify the service line item detail for dental work
 
-See docs at <https://www.stedi.com/edi/x12/segment/SV3>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/SV3>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "SV3")]
 pub struct DentalService {

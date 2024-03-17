@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply the full name of an individual or organizational entity
 
-See docs at <https://www.stedi.com/edi/x12/segment/NM1>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/NM1>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "NM1")]
 pub struct IndividualOrOrganizationalName {

@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1343
 
-See docs at <https://www.stedi.com/edi/x12/element/1343>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1343>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum NonInstitutionalClaimTypeCode {
     ///A - Anesthesia

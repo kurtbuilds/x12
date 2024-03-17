@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**678
 
-See docs at <https://www.stedi.com/edi/x12/element/678>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/678>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum ShipDeliveryOrCalendarPatternCode {
     ///1 - 1st Week of the Month

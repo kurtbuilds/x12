@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1525
 
-See docs at <https://www.stedi.com/edi/x12/element/1525>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1525>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum RequestCategoryCode {
     ///AR - Admission Review

@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**755
 
-See docs at <https://www.stedi.com/edi/x12/element/755>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/755>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum ReportTypeCode {
     ///01 - Product Transfer

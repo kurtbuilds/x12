@@ -4,7 +4,7 @@ use crate::fixed::Fixed;
 use super::super::elements::ActionsIndicated;
 /**To identify the type or transmission or both of paperwork or supporting information
 
-See docs at <https://www.stedi.com/edi/x12/segment/PWK>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/PWK>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "PWK")]
 pub struct Paperwork {

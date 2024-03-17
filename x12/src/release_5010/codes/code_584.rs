@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**584
 
-See docs at <https://www.stedi.com/edi/x12/element/584>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/584>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum EmploymentStatusCode {
     ///00 - Substitute

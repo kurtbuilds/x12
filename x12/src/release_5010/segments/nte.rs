@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To transmit information in a free-form format, if necessary, for comment or special instruction
 
-See docs at <https://www.stedi.com/edi/x12/segment/NTE>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/NTE>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "NTE")]
 pub struct NoteSpecialInstruction {

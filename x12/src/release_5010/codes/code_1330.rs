@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1330
 
-See docs at <https://www.stedi.com/edi/x12/element/1330>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1330>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum DosageFormCode {
     ///01 - Combination Forms

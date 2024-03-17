@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 /**To identify one or more areas of the oral cavity
 
-See docs at <https://www.stedi.com/edi/x12/element/C006>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/C006>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "C006")]
 pub struct OralCavityDesignation {

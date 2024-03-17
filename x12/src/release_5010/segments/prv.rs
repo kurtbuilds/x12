@@ -1,9 +1,9 @@
 use serde::{Serialize, Deserialize};
-use super::super::elements::ProviderSpecialty;
 use crate::fixed::Fixed;
+use super::super::elements::ProviderSpecialty;
 /**To specify the identifying characteristics of a provider
 
-See docs at <https://www.stedi.com/edi/x12/segment/PRV>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/PRV>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "PRV")]
 pub struct Provider {

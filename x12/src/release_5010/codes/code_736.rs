@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**736
 
-See docs at <https://www.stedi.com/edi/x12/element/736>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/736>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum HierarchicalChildCode {
     ///0 - No Subordinate HL Segment in This Hierarchical Structure.

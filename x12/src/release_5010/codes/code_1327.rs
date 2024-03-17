@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1327
 
-See docs at <https://www.stedi.com/edi/x12/element/1327>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1327>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum CopayStatusCode {
     ///0 - Copay exempt

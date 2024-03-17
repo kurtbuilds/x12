@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 /**To supply adjustment reason codes and amounts as needed for an entire claim or for a particular service within the claim being paid
 
-See docs at <https://www.stedi.com/edi/x12/segment/CAS>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CAS>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CAS")]
 pub struct ClaimsAdjustment {

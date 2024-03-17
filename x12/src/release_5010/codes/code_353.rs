@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**353
 
-See docs at <https://www.stedi.com/edi/x12/element/353>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/353>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum TransactionSetPurposeCode {
     ///00 - Original

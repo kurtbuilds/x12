@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use super::super::elements::HealthCareCode;
 /**To supply information related to the delivery of health care
 
-See docs at <https://www.stedi.com/edi/x12/segment/HI>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/HI>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "HI")]
 pub struct HealthCareInformationCodes {

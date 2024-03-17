@@ -88,18 +88,17 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     type Error = X12DeserializerError;
 
     fn deserialize_any<V>(self, visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
-        eprintln!("BufferDeserializer({})::deserialize_any", self.level);
+        // eprintln!("BufferDeserializer({})::deserialize_any", self.level);
         let Some(b) = self.buffer else {
             return Err(X12DeserializerError::EarlyEndOfDocument);
         };
-        eprintln!("buffer: {}", b);
+        // eprintln!("buffer: {}", b);
         let (el, rest) = split_string(b, self.delimiter as char);
         self.buffer = rest;
         if el.contains(self.formatter.sub_element_delimiter as char) {
-            // visitor.visit_enum(&mut X12Deserializer::new(el, self.formatter, Level::Subelement))
             visitor.visit_seq(&mut X12Deserializer::new(el, self.formatter, Level::Subelement))
         } else {
-            eprintln!("visiting str");
+            // eprintln!("visiting str");
             visitor.visit_str(el)
         }
     }
@@ -219,7 +218,7 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     }
 
     fn deserialize_seq<V>(self, visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
-        eprintln!("BufferDeserializer::deserialize_seq");
+        // eprintln!("BufferDeserializer::deserialize_seq");
         visitor.visit_seq(self)
     }
 
@@ -236,7 +235,7 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     }
 
     fn deserialize_struct<V>(mut self, name: &'static str, fields: &'static [&'static str], visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
-        eprintln!("BufferDeserializer::deserialize_struct: {}", name);
+        // eprintln!("BufferDeserializer::deserialize_struct: {}", name);
         let passthrough = match self.level {
             Level::Segment => !is_segment(name),
             Level::Element => !is_container_element(name),
@@ -305,43 +304,11 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     fn is_human_readable(&self) -> bool { false }
 }
 
-// impl<'de> EnumAccess<'de> for &mut X12Deserializer<'de> {
-//     type Error = X12DeserializerError;
-//     type Variant = Self;
-//
-//     fn variant_seed<V>(self, seed: V) -> Result<(V::Value, Self::Variant), Self::Error> where V: DeserializeSeed<'de> {
-//         seed.deserialize(&mut *self).map(|v| (v, self))
-//     }
-// }
-
-// impl<'de> VariantAccess<'de> for &mut X12Deserializer<'de> {
-//     type Error = X12DeserializerError;
-//
-//     fn unit_variant(self) -> Result<(), Self::Error> {
-//         todo!()
-//     }
-//
-//     fn newtype_variant_seed<T>(self, seed: T) -> Result<T::Value, Self::Error> where T: DeserializeSeed<'de> {
-//         todo!()
-//     }
-//
-//     fn tuple_variant<V>(self, len: usize, visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
-//         todo!()
-//     }
-//
-//     fn struct_variant<V>(self, fields: &'static [&'static str], visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
-//         visitor.visit_seq(SizedDeserializer {
-//             de: self,
-//             remaining: fields.len(),
-//         })
-//     }
-// }
-
 impl<'de> SeqAccess<'de> for X12Deserializer<'de> {
     type Error = X12DeserializerError;
 
     fn next_element_seed<T>(&mut self, seed: T) -> Result<Option<T::Value>, Self::Error> where T: DeserializeSeed<'de> {
-        eprintln!("BufferDeserializer({})::next_element_seed: {:?}", self.level, self.buffer);
+        // eprintln!("BufferDeserializer({})::next_element_seed: {:?}", self.level, self.buffer);
         if self.buffer.is_none() {
             return Ok(None);
         }
@@ -365,7 +332,7 @@ impl<'a, 'de> SeqAccess<'de> for SizedDeserializer<'a, 'de> {
     type Error = X12DeserializerError;
 
     fn next_element_seed<T>(&mut self, seed: T) -> Result<Option<T::Value>, Self::Error> where T: DeserializeSeed<'de> {
-        eprintln!("SizedBufferDeserializer({})::next_element_seed: {}", self.name, self.total - self.remaining);
+        // eprintln!("SizedBufferDeserializer({})::next_element_seed: {}", self.name, self.total - self.remaining);
         if self.remaining == 0 {
             return Ok(None);
         }

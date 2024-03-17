@@ -208,15 +208,11 @@ impl<'ser> ser::Serializer for SerState<'ser> {
     }
 
     fn serialize_newtype_variant<T: ?Sized>(mut self, name: &'static str, variant_index: u32, variant: &'static str, value: &T) -> Result<Self::Ok, Self::Error> where T: Serialize {
-        // eprintln!("newtype: {}::{}", name, variant);
-        // self.first = true;
-        // value.serialize(self)
         todo!()
     }
 
     fn serialize_seq(mut self, len: Option<usize>) -> Result<Self::SerializeSeq, Self::Error> {
-        eprintln!("serialize_seq: {:?}", len);
-        // self.first = true;
+        // eprintln!("serialize_seq: {:?}", len);
         Ok(self)
     }
 
@@ -237,10 +233,8 @@ impl<'ser> ser::Serializer for SerState<'ser> {
     }
 
     fn serialize_struct(mut self, name: &'static str, len: usize) -> Result<Self::SerializeStruct, Self::Error> {
-        eprintln!("{}: {} {}", "serialize struct:".yellow(), name, len);
+        // eprintln!("{}: {} {}", "serialize struct:".yellow(), name, len);
         let mut s = SerStruct::new(self.ser, Level::Segment);
-        // self.first = true;
-        // let mut s = SerStruct::new(self.ser, Level::Segment);
         s.name = name;
         if is_container_element(name) {
             s.level = Level::Subelement;
@@ -304,27 +298,16 @@ impl<'ser> ser::SerializeStruct for SerStruct<'ser> {
         where
             T: ?Sized + Serialize,
     {
-        eprintln!("SerializeStruct({})::serialize_field: {}", self.name, key);
+        // eprintln!("SerializeStruct({})::serialize_field: {}", self.name, key);
         if self.skip {
             self.skip = false;
             return Ok(());
         }
-        // // if !self.first {
-        // // }
-        // // self.first = false;
         let size = self.ser.output.len();
         let r = value.serialize(SerState::new(self.ser, self.level));
         if self.level != Level::Segment {
             self.ser.output.push(self.delimiter);
         }
-        // if self.level == Level::Segment {
-        //     if !self.ser.output.ends_with(&[self.delimiter, b'\n']) {
-        //         self.ser.output.push(self.delimiter);
-        //         self.ser.output.push(b'\n');
-        //     }
-        // } else {
-        //     self.ser.output.push(self.delimiter);
-        // }
         r
     }
 
@@ -338,8 +321,7 @@ impl<'ser> ser::SerializeStruct for SerStruct<'ser> {
                 self.ser.output.push(b'\n');
             }
         }
-        eprintln!("finished {} - {}.\n{}\n{}", self.name, self.level, "colored output:".green(), String::from_utf8(self.ser.output.clone()).unwrap());
-        // std::thread::sleep(std::time::Duration::from_millis(1000));
+        // eprintln!("finished {} - {}.\n{}\n{}", self.name, self.level, "colored output:".green(), String::from_utf8(self.ser.output.clone()).unwrap());
         Ok(())
     }
 }
@@ -398,9 +380,7 @@ impl<'ser> ser::SerializeTupleStruct for SerState<'ser> {
 }
 
 impl<'ser> ser::SerializeSeq for SerState<'ser> {
-    // Must match the `Ok` type of the serializer.
     type Ok = ();
-    // Must match the `Error` type of the serializer.
     type Error = X12SerializerError;
 
     // Serialize a single element of the sequence.
@@ -408,15 +388,7 @@ impl<'ser> ser::SerializeSeq for SerState<'ser> {
         where
             T: ?Sized + Serialize,
     {
-        eprintln!("{}", self.level);
-        // if !self.first {
-        //     self.ser.output.push(self.delimiter);
-        // }
-        // self.first = false;
-        // let l = self.level;
-        // let d = self.delimiter;
-        // self.level = self.level.lower();
-        // self.delimiter = self.ser.formatter.delimiter(self.level);
+        // eprintln!("{}", self.level);
         let l = self.level.lower();
         let r = value.serialize(SerState::new(self.ser, l));
         if self.level != Level::Segment {
@@ -425,7 +397,6 @@ impl<'ser> ser::SerializeSeq for SerState<'ser> {
         r
     }
 
-    // Close the sequence.
     fn end(self) -> Result<(), Self::Error> {
         if self.level != Level::Segment {
             self.ser.output.pop();
@@ -479,7 +450,6 @@ mod tests {
         ];
         let mut inner = X12Serializer::default();
         let ser = SerState::new(&mut inner, Level::Element);
-        // let mut ser = X12Serializer::new(X12Formatter::default(), Level::Element);
         value.serialize(ser).unwrap();
         assert_eq!(inner.to_string(), "01*02a:02b:02c*03");
     }

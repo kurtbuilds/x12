@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**559
 
-See docs at <https://www.stedi.com/edi/x12/element/559>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/559>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum AgencyQualifierCode {
     ///10 - Alabama

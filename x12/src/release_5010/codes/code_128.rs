@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**128
 
-See docs at <https://www.stedi.com/edi/x12/element/128>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/128>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum ReferenceIdentificationQualifier {
     ///00 - Contracting District Number

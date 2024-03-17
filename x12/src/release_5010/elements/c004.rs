@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 /**To identify one or more diagnosis code pointers
 
-See docs at <https://www.stedi.com/edi/x12/element/C004>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/C004>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "C004")]
 pub struct CompositeDiagnosisCodePointer {

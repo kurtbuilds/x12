@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply information related to the ambulance service rendered to a patient
 
-See docs at <https://www.stedi.com/edi/x12/segment/CR1>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CR1>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CR1")]
 pub struct AmbulanceCertification {

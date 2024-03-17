@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To provide the receiving school district or postsecondary institution with a notice of the immunization status of the student
 
-See docs at <https://www.stedi.com/edi/x12/segment/IMM>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/IMM>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "IMM")]
 pub struct ImmunizationStatus {

@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 /**To specify the location of the named party
 
-See docs at <https://www.stedi.com/edi/x12/segment/N3>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/N3>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "N3")]
 pub struct PartyLocation {

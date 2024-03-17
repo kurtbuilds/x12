@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To specify basic data about the contract or contract line item
 
-See docs at <https://www.stedi.com/edi/x12/segment/CN1>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/CN1>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "CN1")]
 pub struct Contract {

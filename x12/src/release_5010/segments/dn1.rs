@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply orthodontic information
 
-See docs at <https://www.stedi.com/edi/x12/segment/DN1>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/DN1>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "DN1")]
 pub struct Orthodontic {

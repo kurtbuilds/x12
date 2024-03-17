@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1351
 
-See docs at <https://www.stedi.com/edi/x12/element/1351>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1351>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum PatientSignatureSourceCode {
     ///B - Signed signature authorization form or forms for both HCFA-1500 Claim Form block 12 and block 13 are on file

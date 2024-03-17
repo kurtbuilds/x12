@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To identify dependencies among and the content of hierarchically related groups of data segments
 
-See docs at <https://www.stedi.com/edi/x12/segment/HL>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/HL>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "HL")]
 pub struct HierarchicalLevel {

@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To specify information in response to a codified questionnaire document
 
-See docs at <https://www.stedi.com/edi/x12/segment/FRM>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/FRM>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "FRM")]
 pub struct SupportingDocumentation {

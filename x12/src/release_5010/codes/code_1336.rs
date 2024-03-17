@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**1336
 
-See docs at <https://www.stedi.com/edi/x12/element/1336>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/1336>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum InsuranceTypeCode {
     ///12 - Medicare Secondary Working Aged Beneficiary or Spouse with Employer Group Health Plan

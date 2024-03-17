@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To identify a medical procedure by its standardized codes and applicable modifiers
 
-See docs at <https://www.stedi.com/edi/x12/element/C003>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/C003>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "C003")]
 pub struct CompositeMedicalProcedure {

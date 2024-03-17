@@ -2,7 +2,7 @@ use std::fmt;
 use serde::{de, Deserialize, ser, Serialize};
 /**98
 
-See docs at <https://www.stedi.com/edi/x12/element/98>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/98>*/
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum EntityIdentifierCode {
     ///00 - Alternate Insurer

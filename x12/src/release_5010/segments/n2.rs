@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 /**To specify additional names
 
-See docs at <https://www.stedi.com/edi/x12/segment/N2>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/N2>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "N2")]
 pub struct AdditionalName {

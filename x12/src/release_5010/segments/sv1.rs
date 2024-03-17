@@ -1,10 +1,10 @@
 use serde::{Serialize, Deserialize};
-use super::super::elements::CompositeMedicalProcedure;
 use crate::fixed::Fixed;
 use super::super::elements::CompositeDiagnosisCodePointer;
+use super::super::elements::CompositeMedicalProcedure;
 /**To specify the service line item detail for a health care professional
 
-See docs at <https://www.stedi.com/edi/x12/segment/SV1>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/SV1>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "SV1")]
 pub struct ProfessionalService {

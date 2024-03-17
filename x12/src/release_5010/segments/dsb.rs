@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
 /**To supply disability information
 
-See docs at <https://www.stedi.com/edi/x12/segment/DSB>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/DSB>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "DSB")]
 pub struct Disability {

@@ -1,10 +1,10 @@
 use serde::{Serialize, Deserialize};
 use super::super::codes::DateTimePeriodFormatQualifier;
-use super::super::codes::CodeListQualifierCode;
 use crate::fixed::Fixed;
+use super::super::codes::CodeListQualifierCode;
 /**To send health care codes and their associated dates, amounts and quantities
 
-See docs at <https://www.stedi.com/edi/x12/element/C022>*/
+See docs at <https://www.stedi.com/edi/x12-005010/element/C022>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "C022")]
 pub struct HealthCareCode {

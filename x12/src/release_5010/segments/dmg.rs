@@ -1,9 +1,9 @@
 use serde::{Serialize, Deserialize};
-use super::super::elements::CompositeRaceOrEthnicity;
 use crate::fixed::Fixed;
+use super::super::elements::CompositeRaceOrEthnicity;
 /**To supply demographic information
 
-See docs at <https://www.stedi.com/edi/x12/segment/DMG>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/DMG>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "DMG")]
 pub struct Demographic {

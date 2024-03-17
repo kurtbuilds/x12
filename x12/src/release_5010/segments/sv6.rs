@@ -1,10 +1,10 @@
 use serde::{Serialize, Deserialize};
 use super::super::elements::CompositeMedicalProcedure;
-use super::super::elements::CompositeDiagnosisCodePointer;
 use crate::fixed::Fixed;
+use super::super::elements::CompositeDiagnosisCodePointer;
 /**To specify the claim service detail for anesthesia
 
-See docs at <https://www.stedi.com/edi/x12/segment/SV6>*/
+See docs at <https://www.stedi.com/edi/x12-005010/segment/SV6>*/
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 #[serde(tag = "code", rename = "SV6")]
 pub struct AnesthesiaService {
