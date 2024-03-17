@@ -180,10 +180,10 @@ impl<'ser> ser::Serializer for SerState<'ser> {
     }
 
     fn serialize_none(self) -> Result<Self::Ok, Self::Error> {
-        if self.ser.output.ends_with(&[self.delimiter]) {
-            // it'll get put back on by SerStruct
-            self.ser.output.pop();
-        }
+        // paired with logic after serialize in SerStruct
+        // if self.level != Level::Segment {
+        //     self.ser.output.pop();
+        // }
         Ok(())
     }
 
@@ -312,6 +312,11 @@ impl<'ser> ser::SerializeStruct for SerStruct<'ser> {
     }
 
     fn end(self) -> Result<(), Self::Error> {
+        let count = self.ser.output.iter().rev().take_while(|&&c| c == self.delimiter).count();
+        eprintln!("{} delimiters for {}", count, self.name);
+        if count > 0 {
+            self.ser.output.truncate(self.ser.output.len() - count + 1);
+        }
         if self.level != Level::Segment {
             self.ser.output.pop();
         }
@@ -391,6 +396,7 @@ impl<'ser> ser::SerializeSeq for SerState<'ser> {
         // eprintln!("{}", self.level);
         let l = self.level.lower();
         let r = value.serialize(SerState::new(self.ser, l));
+        // pairs with logic in serialize_none
         if self.level != Level::Segment {
             self.ser.output.push(self.delimiter);
         }
