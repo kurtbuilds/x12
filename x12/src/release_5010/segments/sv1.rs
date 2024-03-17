@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
+use super::super::elements::CompositeMedicalProcedure;
 use crate::fixed::Fixed;
 use super::super::elements::CompositeDiagnosisCodePointer;
-use super::super::elements::CompositeMedicalProcedure;
 /**To specify the service line item detail for a health care professional
 
 See docs at <https://www.stedi.com/edi/x12/segment/SV1>*/

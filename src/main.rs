@@ -5,7 +5,7 @@ use std::str::FromStr;
 
 use serde_x12::{detect_version, Element, from_str, to_string};
 use x12::Document;
-use x12::release_8010::transactions::HealthCareClaim;
+use x12::release_5010::transactions::HealthCareClaim;
 use x12::InterchangeControlHeader;
 
 fn main() {
@@ -19,15 +19,7 @@ fn main() {
     // let lines = segments.len();
     // dbg!(&segments[..lines]);
     // let x12 = segments[..lines].join("\n") + "\n";
-    // let rt_doc = from_str::<Document<HealthCareClaim>>(&x12).unwrap();
-    let v = detect_version(&segments[0]).unwrap();
-    if v == "00501" {
-        println!("Version: 00501");
-    } else {
-        println!("Version: 00801");
-    }
-    let isa: InterchangeControlHeader = from_str(segments[0]).unwrap();;
-    eprintln!("ISA: {:#?}", isa);
+    let doc = from_str::<Document<HealthCareClaim>>(&x12).unwrap();
     // eprintln!(" === Completed parsing ===");
     // eprintln!("Header: {:#?}", rt_doc.functional_group_header);
     // for tx in &rt_doc.transactions {
@@ -59,7 +51,7 @@ fn main() {
     //         }
     //     }
     // }
-    // let x12 = to_string(&rt_doc).unwrap();
-    // println!("{}", x12);
-    // fs::write("output.txt", x12).unwrap();
+    let x12 = to_string(&doc).unwrap();
+    println!("{}", x12);
+    fs::write("output.txt", x12).unwrap();
 }

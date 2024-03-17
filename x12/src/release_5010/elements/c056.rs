@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use super::super::codes::CodeListQualifierCode;
 use crate::fixed::Fixed;
+use super::super::codes::CodeListQualifierCode;
 /**To send general and detailed information on race or ethnicity
 
 See docs at <https://www.stedi.com/edi/x12/element/C056>*/

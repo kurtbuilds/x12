@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use super::super::elements::CompositeMedicalProcedure;
 use crate::numeric::Numeric;
+use super::super::elements::CompositeMedicalProcedure;
 /**To convey service line adjudication information for coordination of benefits between the initial payers of a health care claim and all subsequent payers
 
 See docs at <https://www.stedi.com/edi/x12/segment/SVD>*/

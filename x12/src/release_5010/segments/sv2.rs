@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use crate::fixed::Fixed;
 use super::super::elements::CompositeMedicalProcedure;
+use crate::fixed::Fixed;
 /**To specify the service line item detail for a health care institution
 
 See docs at <https://www.stedi.com/edi/x12/segment/SV2>*/

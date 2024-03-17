@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
-use crate::fixed::Fixed;
-use super::super::codes::CodeListQualifierCode;
 use super::super::codes::DateTimePeriodFormatQualifier;
+use super::super::codes::CodeListQualifierCode;
+use crate::fixed::Fixed;
 /**To send health care codes and their associated dates, amounts and quantities
 
 See docs at <https://www.stedi.com/edi/x12/element/C022>*/

@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use crate::fixed::Fixed;
 use super::super::elements::CompositeRaceOrEthnicity;
+use crate::fixed::Fixed;
 /**To supply demographic information
 
 See docs at <https://www.stedi.com/edi/x12/segment/DMG>*/

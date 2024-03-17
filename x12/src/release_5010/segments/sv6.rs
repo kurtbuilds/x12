@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
-use crate::fixed::Fixed;
 use super::super::elements::CompositeMedicalProcedure;
 use super::super::elements::CompositeDiagnosisCodePointer;
+use crate::fixed::Fixed;
 /**To specify the claim service detail for anesthesia
 
 See docs at <https://www.stedi.com/edi/x12/segment/SV6>*/

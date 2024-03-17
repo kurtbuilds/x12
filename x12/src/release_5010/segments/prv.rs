@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use crate::fixed::Fixed;
 use super::super::elements::ProviderSpecialty;
+use crate::fixed::Fixed;
 /**To specify the identifying characteristics of a provider
 
 See docs at <https://www.stedi.com/edi/x12/segment/PRV>*/

@@ -1,4 +1,4 @@
-use x12::segments::ProfessionalService;
+use x12::release_5010::segments::ProfessionalService;
 use serde_x12::from_str;
 
 #[test]

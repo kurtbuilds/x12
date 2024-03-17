@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use crate::fixed::Fixed;
 use super::super::codes::ProviderSpecialtyCode;
+use crate::fixed::Fixed;
 /**To provide provider specialty information
 
 See docs at <https://www.stedi.com/edi/x12/element/C035>*/

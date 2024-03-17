@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
-use super::super::elements::ActionsIndicated;
 use crate::numeric::Numeric;
 use crate::fixed::Fixed;
+use super::super::elements::ActionsIndicated;
 /**To identify the type or transmission or both of paperwork or supporting information
 
 See docs at <https://www.stedi.com/edi/x12/segment/PWK>*/
