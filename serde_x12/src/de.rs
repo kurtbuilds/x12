@@ -200,6 +200,9 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     }
 
     fn deserialize_option<V>(self, visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
+        let next = self.buffer
+            .and_then(|b| b.split(self.delimiter as char).next());
+        eprintln!("BufferDeserializer::deserialize_option: {:?}", next);
         if self.buffer.is_none() {
             return visitor.visit_none();
         }
@@ -236,7 +239,9 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     }
 
     fn deserialize_seq<V>(self, visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
-        // eprintln!("BufferDeserializer::deserialize_seq");
+        let next = self.buffer
+            .and_then(|b| b.split(self.delimiter as char).next());
+        eprintln!("BufferDeserializer::deserialize_seq: {:?}", next);
         visitor.visit_seq(self)
     }
 
@@ -253,7 +258,9 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     }
 
     fn deserialize_struct<V>(mut self, name: &'static str, fields: &'static [&'static str], visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
-        // eprintln!("BufferDeserializer::deserialize_struct: {}", name);
+        let next = self.buffer
+            .and_then(|b| b.split(self.delimiter as char).next());
+        eprintln!("BufferDeserializer::deserialize_struct: {}, encountered: {:?}", name, next);
         let passthrough = match self.level {
             Level::Segment => !is_segment(name),
             Level::Element => !is_container_element(name),
