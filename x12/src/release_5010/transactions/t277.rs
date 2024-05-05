@@ -1,25 +1,25 @@
 use serde::{Serialize, Deserialize};
-use crate::release_5010::segments::PartyIdentification;
-use crate::release_5010::segments::Trace;
-use crate::release_5010::segments::DateOrTimeOrPeriod;
-use crate::release_5010::segments::Quantity;
-use crate::release_5010::segments::Patient;
-use crate::release_5010::segments::PartyLocation;
-use crate::release_5010::segments::Status;
-use crate::release_5010::segments::GeographicLocation;
-use crate::release_5010::segments::AdministrativeCommunicationsContact;
-use crate::release_5010::segments::TransactionSetTrailer;
-use crate::release_5010::segments::HierarchicalLevel;
-use crate::release_5010::segments::Demographic;
-use crate::release_5010::segments::Service;
-use crate::release_5010::segments::TransactionSetHeader;
-use crate::release_5010::segments::BeginningOfHierarchicalTransaction;
-use crate::release_5010::segments::Subscriber;
 use crate::release_5010::segments::Paperwork;
+use crate::release_5010::segments::Trace;
 use crate::release_5010::segments::Reference;
-use crate::release_5010::segments::MonetaryAmount;
-use crate::release_5010::segments::IndividualOrOrganizationalName;
+use crate::release_5010::segments::Service;
+use crate::release_5010::segments::HierarchicalLevel;
+use crate::release_5010::segments::GeographicLocation;
+use crate::release_5010::segments::BeginningOfHierarchicalTransaction;
+use crate::release_5010::segments::DateOrTimeOrPeriod;
 use crate::release_5010::segments::AdditionalName;
+use crate::release_5010::segments::Subscriber;
+use crate::release_5010::segments::Patient;
+use crate::release_5010::segments::AdministrativeCommunicationsContact;
+use crate::release_5010::segments::PartyIdentification;
+use crate::release_5010::segments::IndividualOrOrganizationalName;
+use crate::release_5010::segments::Status;
+use crate::release_5010::segments::TransactionSetTrailer;
+use crate::release_5010::segments::MonetaryAmount;
+use crate::release_5010::segments::PartyLocation;
+use crate::release_5010::segments::Quantity;
+use crate::release_5010::segments::TransactionSetHeader;
+use crate::release_5010::segments::Demographic;
 /**This X12 Transaction Set contains the format and establishes the data contents of the Health Care Information Status Notification Transaction Set (277) for use within the context of an Electronic Data Interchange (EDI) environment.
 This transaction set can be used by a health care payer or authorized agent to notify a provider, recipient, or authorized agent regarding the status of a health care claim or encounter or to request additional information from the provider regarding a health care claim or encounter, health care services review, or transactions related to the provisions of health care. This transaction set is not intended to replace the Health Care Claim Payment/Advice Transaction Set (835) and therefore, will not be used for account payment posting. The notification may be at a summary or service line detail level. The notification may be solicited or unsolicited.
 
@@ -72,7 +72,7 @@ To uniquely identify a transaction to an application*/
     pub trace: Trace,
     /**Status Information (STC)
 To report the status, required action, and paid information of a claim or service line*/
-    pub status: Option<Status>,
+    pub status: Vec<Status>,
     /**Reference Information (REF)
 To specify identifying information*/
     pub reference: Vec<Reference>,
@@ -98,7 +98,7 @@ To supply payment and control information to a provider for a particular service
     pub service: Service,
     /**Status Information (STC)
 To report the status, required action, and paid information of a claim or service line*/
-    pub status: Option<Status>,
+    pub status: Vec<Status>,
     /**Reference Information (REF)
 To specify identifying information*/
     pub reference: Option<Reference>,
