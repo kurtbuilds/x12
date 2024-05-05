@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
-use super::super::elements::CompositeUnitOfMeasure;
 use crate::numeric::Numeric;
+use super::super::elements::CompositeUnitOfMeasure;
 /**To specify pricing information
 
 See docs at <https://www.stedi.com/edi/x12-005010/segment/CTP>*/

@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use crate::numeric::Numeric;
 use crate::fixed::Fixed;
+use crate::numeric::Numeric;
 /**To supply information related to the chiropractic service rendered to a patient
 
 See docs at <https://www.stedi.com/edi/x12-005010/segment/CR2>*/

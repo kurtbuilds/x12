@@ -10,6 +10,8 @@ pub use numeric::Numeric;
 pub mod release_8010;
 #[cfg(feature = "5010")]
 pub mod release_5010;
+#[cfg(feature = "hipaa")]
+pub mod hipaa;
 mod fixed;
 mod document;
 pub mod response;

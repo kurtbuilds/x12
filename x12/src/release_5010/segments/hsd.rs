@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use crate::numeric::Numeric;
 use crate::fixed::Fixed;
+use crate::numeric::Numeric;
 /**To specify the delivery pattern of health care services
 
 See docs at <https://www.stedi.com/edi/x12-005010/segment/HSD>*/

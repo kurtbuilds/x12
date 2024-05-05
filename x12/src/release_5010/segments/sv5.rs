@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use super::super::elements::CompositeMedicalProcedure;
 use crate::fixed::Fixed;
+use super::super::elements::CompositeMedicalProcedure;
 /**To specify the claim service detail for durable medical equipment
 
 See docs at <https://www.stedi.com/edi/x12-005010/segment/SV5>*/

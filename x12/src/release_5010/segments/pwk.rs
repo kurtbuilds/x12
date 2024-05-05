@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use crate::numeric::Numeric;
 use crate::fixed::Fixed;
+use crate::numeric::Numeric;
 use super::super::elements::ActionsIndicated;
 /**To identify the type or transmission or both of paperwork or supporting information
 

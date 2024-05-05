@@ -16,6 +16,7 @@ path = "src/lib.rs"
 [features]
 8010 = []
 5010 = []
+hipaa = ["5010"]
 
 [dependencies]
 serde = { version = "1.0.196" , features = ["derive"] }

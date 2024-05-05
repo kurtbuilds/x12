@@ -7,7 +7,15 @@ use crate::{Level, X12Formatter};
 use crate::formatter::{detect_format, split_string};
 
 pub fn from_str<'de, T>(input: &'de str) -> Result<T, X12DeserializerError> where T: serde::Deserialize<'de> {
+    from_str_returning_format(input).map(|(v, _)| v)
+}
+
+pub fn from_str_returning_format<'de, T>(input: &'de str) -> Result<(T, X12Formatter), X12DeserializerError> where T: serde::Deserialize<'de> {
     let formatter = detect_format(input).unwrap_or_default();
+    from_str_using_format(input, formatter).map(|v| (v, formatter))
+}
+
+pub fn from_str_using_format<'de, T>(input: &'de str, formatter: X12Formatter) -> Result<T, X12DeserializerError> where T: serde::Deserialize<'de> {
     let mut deserializer = X12Deserializer::new(input, formatter, Level::Segment);
     let value = T::deserialize(&mut deserializer)?;
     if let Some(buf) = deserializer.buffer {
@@ -18,6 +26,7 @@ pub fn from_str<'de, T>(input: &'de str) -> Result<T, X12DeserializerError> wher
         Ok(value)
     }
 }
+
 
 
 #[derive(Debug)]
@@ -191,6 +200,15 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     }
 
     fn deserialize_option<V>(self, visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
+        if self.buffer.is_none() {
+            return visitor.visit_none();
+        }
+        if let Some(buf) = self.buffer.as_mut() {
+            if buf.as_bytes()[0] == self.delimiter {
+                *buf = &buf[1..];
+                return visitor.visit_none()
+            }
+        }
         // this only works because all the visitors ive seen are ZSTs
         // if they did have state, this would be a disaster
         let insanely_unsafe_copy_of_visitor = unsafe {
@@ -255,11 +273,9 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
         let (mut sub_buf, mut rest) = split_string(buf, self.delimiter as char);
         if self.level == Level::Segment {
             if let Some(r) = rest.as_mut() {
-                if r.starts_with('\r') {
-                    *r = &r[1..];
-                }
-                while r.starts_with('\n') {
-                    *r = &r[1..];
+                let sep = self.formatter.visual_separator.as_bytes();
+                if r.as_bytes().starts_with(sep) {
+                    *r = &r[sep.len()..];
                 }
                 if r.is_empty() {
                     rest = None;
@@ -462,6 +478,22 @@ mod tests {
                 field3: "02c".to_string(),
             },
             field3: "03".to_string(),
+        })
+    }
+
+    #[test]
+    fn test_deserialize_str_becomes_none() {
+        let input = "*one";
+        #[derive(Deserialize, PartialEq, Debug)]
+        struct Segment {
+            field1: Option<String>,
+            field2: String,
+        }
+        let mut de = X12Deserializer::new(input, X12Formatter::default(), Level::Element);
+        let value = Segment::deserialize(&mut de).unwrap();
+        assert_eq!(value, Segment {
+            field1: None,
+            field2: "one".to_string(),
         })
     }
 }

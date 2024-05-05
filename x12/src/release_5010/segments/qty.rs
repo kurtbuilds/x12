@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use super::super::elements::CompositeUnitOfMeasure;
 use crate::fixed::Fixed;
+use super::super::elements::CompositeUnitOfMeasure;
 /**To specify quantity information
 
 See docs at <https://www.stedi.com/edi/x12-005010/segment/QTY>*/

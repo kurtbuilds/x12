@@ -1,7 +1,7 @@
 use serde::{Serialize, Deserialize};
 use crate::fixed::Fixed;
-use super::super::elements::RelatedCauses;
 use super::super::elements::HealthCareServiceLocation;
+use super::super::elements::RelatedCauses;
 /**To specify basic data about the claim
 
 See docs at <https://www.stedi.com/edi/x12-005010/segment/CLM>*/

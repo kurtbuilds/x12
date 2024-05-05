@@ -9,8 +9,8 @@ use crate::formatter::{Level, VisualSeparator};
 use crate::X12Formatter;
 
 pub fn to_string<T>(value: &T) -> Result<String, X12SerializerError>
-where
-    T: ser::Serialize,
+    where
+        T: ser::Serialize,
 {
     let mut inner = X12Serializer::default();
     let ser = SerState {
@@ -71,6 +71,7 @@ impl<'ser> SerStruct<'ser> {
         }
     }
 }
+
 impl<'ser> SerState<'ser> {
     pub fn new(ser: &'ser mut X12Serializer, level: Level) -> SerState<'ser> {
         Self {
@@ -317,11 +318,7 @@ impl<'ser> ser::SerializeStruct for SerStruct<'ser> {
         if self.level == Level::Element {
             let f = self.ser.formatter;
             let o = &self.ser.output;
-            let ends_segment = match f.visual_separator {
-                VisualSeparator::None => o.ends_with(&[f.segment_delimiter]),
-                VisualSeparator::Newline => o.ends_with(&[f.segment_delimiter, b'\n']),
-                VisualSeparator::CarriageNewline => o.ends_with(&[f.segment_delimiter, b'\r', b'\n']),
-            };
+            let ends_segment = o.ends_with(f.visual_separator.as_bytes());
             if !ends_segment {
                 self.ser.output.push(self.ser.formatter.segment_delimiter);
                 self.ser.output.extend_from_slice(self.ser.formatter.visual_separator.as_bytes());
@@ -409,7 +406,7 @@ impl<'ser> ser::SerializeSeq for SerState<'ser> {
 
 impl<'ser> ser::SerializeTuple for SerState<'ser> {
     type Ok = ();
-    type Error = X12SerializerError ;
+    type Error = X12SerializerError;
 
     fn serialize_element<T>(&mut self, value: &T) -> Result<(), Self::Error>
         where
@@ -443,6 +440,7 @@ mod tests {
         value.serialize(ser).unwrap();
         assert_eq!(inner.to_string(), "a*b*c");
     }
+
     #[test]
     fn test_serialize_element_vec_with_container() {
         let value = vec![

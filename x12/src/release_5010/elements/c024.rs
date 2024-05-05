@@ -1,6 +1,6 @@
 use serde::{Serialize, Deserialize};
-use crate::fixed::Fixed;
 use super::super::codes::CountryCode;
+use crate::fixed::Fixed;
 use super::super::codes::RelatedCausesCode;
 /**To identify one or more related causes and associated state or country information
 

@@ -45,6 +45,8 @@ pub enum VisualSeparator {
     Newline,
     /// \r\n
     CarriageNewline,
+    /// \r\r\n
+    DoubleCarriageNewline,
 }
 
 impl VisualSeparator {
@@ -53,17 +55,26 @@ impl VisualSeparator {
             VisualSeparator::None => b"",
             VisualSeparator::Newline => b"\n",
             VisualSeparator::CarriageNewline => b"\r\n",
+            VisualSeparator::DoubleCarriageNewline => b"\r\r\n",
         }
+    }
+
+    pub fn from_bytes(b: &[u8]) -> Option<Self> {
+        let b = match b {
+            b"" => VisualSeparator::None,
+            b"\n" => VisualSeparator::Newline,
+            b"\r\n" => VisualSeparator::CarriageNewline,
+            b"\r\r\n" => VisualSeparator::DoubleCarriageNewline,
+            _ => return None,
+        };
+        Some(b)
     }
 }
 
 impl Debug for VisualSeparator {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            VisualSeparator::None => write!(f, r#""""#),
-            VisualSeparator::Newline => write!(f, r#""\n""#),
-            VisualSeparator::CarriageNewline => write!(f, r#""\r\n""#),
-        }
+        let b = std::str::from_utf8(self.as_bytes()).unwrap();
+        write!(f, "{:?}", b)
     }
 }
 
@@ -85,11 +96,11 @@ impl X12Formatter {
     }
 
     pub fn segment_terminator(&self) -> Vec<u8> {
-        match self.visual_separator {
-            VisualSeparator::None => Vec::from(&[self.segment_delimiter]),
-            VisualSeparator::Newline => Vec::from(&[self.segment_delimiter, b'\n']),
-            VisualSeparator::CarriageNewline => Vec::from(&[self.segment_delimiter, b'\r', b'\n']),
-        }
+        let b = self.visual_separator.as_bytes();
+        let mut s = Vec::with_capacity(1 + b.len());
+        s.push(self.segment_delimiter);
+        s.extend_from_slice(b);
+        s
     }
 
     pub fn to_string<T>(&self, value: &T) -> Result<String, X12SerializerError>
@@ -145,12 +156,9 @@ pub fn detect_format(s: &str) -> Option<X12Formatter> {
     let element_delimiter = s[103];
     let sub_element_delimiter = s[104];
     let segment_delimiter = s[105];
-    let visual_separator = match &s[106..108] {
-        b"\r\n" => VisualSeparator::CarriageNewline,
-        b"\nG" => VisualSeparator::Newline,
-        b"GS" => VisualSeparator::None,
-        _ => return None,
-    };
+    let sep = s[106..110].iter().position(|&b| b == b'G')?;
+    let sep = &s[106..106 + sep];
+    let visual_separator = VisualSeparator::from_bytes(sep)?;
     Some(X12Formatter {
         element_delimiter,
         sub_element_delimiter,
