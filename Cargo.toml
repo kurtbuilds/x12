@@ -4,9 +4,3 @@ members = [
     "serde_x12",
     "x12",
 ]
-
-[dependencies]
-serde_x12_alt = { path = "serde_x12" }
-x12_alt = { path = "x12", features = ["5010"] }
-serde_json = "1.0.113"
-serde = { version = "1.0.197", features = ["derive"] }
