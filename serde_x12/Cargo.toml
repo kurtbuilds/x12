@@ -16,6 +16,7 @@ path = "src/lib.rs"
 [dependencies]
 serde = { version = "1.0.197", features = ["derive"] }
 colored = "2.1.0"
+tracing = { version = "0.1.40" , optional = true }
 
 [dev-dependencies]
 x12_alt = { path = "../x12", features = ["5010"] }

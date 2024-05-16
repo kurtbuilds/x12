@@ -5,6 +5,7 @@ use serde::Deserializer;
 
 use crate::{Level, X12Formatter};
 use crate::formatter::{detect_format, split_string};
+use crate::debug;
 
 pub fn from_str<'de, T>(input: &'de str) -> Result<T, X12DeserializerError> where T: serde::Deserialize<'de> {
     from_str_returning_format(input).map(|(v, _)| v)
@@ -202,7 +203,7 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     fn deserialize_option<V>(self, visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
         let next = self.buffer
             .and_then(|b| b.split(self.delimiter as char).next());
-        eprintln!("BufferDeserializer::deserialize_option: {:?}", next);
+        debug!("BufferDeserializer::deserialize_option: {:?}", next);
         if self.buffer.is_none() {
             return visitor.visit_none();
         }
@@ -241,7 +242,7 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     fn deserialize_seq<V>(self, visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
         let next = self.buffer
             .and_then(|b| b.split(self.delimiter as char).next());
-        eprintln!("BufferDeserializer::deserialize_seq: {:?}", next);
+        debug!("BufferDeserializer::deserialize_seq: {:?}", next);
         visitor.visit_seq(self)
     }
 
@@ -260,7 +261,7 @@ impl<'de, 'a> Deserializer<'de> for &'a mut X12Deserializer<'de> {
     fn deserialize_struct<V>(mut self, name: &'static str, fields: &'static [&'static str], visitor: V) -> Result<V::Value, Self::Error> where V: Visitor<'de> {
         let next = self.buffer
             .and_then(|b| b.split(self.delimiter as char).next());
-        eprintln!("BufferDeserializer::deserialize_struct: {}, encountered: {:?}", name, next);
+        debug!("BufferDeserializer::deserialize_struct: {}, encountered: {:?}", name, next);
         let passthrough = match self.level {
             Level::Segment => !is_segment(name),
             Level::Element => !is_container_element(name),

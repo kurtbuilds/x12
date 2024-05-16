@@ -11,3 +11,12 @@ mod generic;
 pub mod de;
 pub mod ser;
 
+
+#[cfg(feature = "tracing")]
+use tracing::debug;
+
+#[cfg(not(feature = "tracing"))]
+#[macro_export]
+macro_rules! debug {
+    ($($arg:tt)*) => {};
+}
